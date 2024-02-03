@@ -10,7 +10,7 @@ function inputLength() {
 
 function createListElement(text, category) {
     const li = document.createElement('li');
-    li.innerHTML = `${text} (Category: ${category}) <button class="delete">delete</button>`;
+    li.innerHTML = `<span class="task">${text}</span> <span class="category">${category}</span> <button class="delete">delete</button>`;
     ul.appendChild(li);
     li.addEventListener('click', toggleDone);
     li.querySelector('.delete').addEventListener('click', deleteItem);

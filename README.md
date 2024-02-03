@@ -6,4 +6,4 @@ This simple JavaScript webpage allows users to create and maintain a to-do list,
 * Mark an item as done (without deleting it)
 * Delete an item when completely finished with the task
 ## Screenshot
-![img.png](img.png)
+![img_1.png](img_1.png)

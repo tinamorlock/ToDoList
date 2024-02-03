@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-    <h1>Simple To-Do List</h1>
-    <div id="instructions">
-        <ol>
-            <li>Enter an item in your to-do list.</li>
-            <li>Click the item to mark it as done. (Click again to unmark it as done.)</li>
-            <li>If you're REALLY sure it's finished, click the delete button to remove it.</li>
-        </ol>
-    </div>
-    <input type="text" id="userInput" placeholder="Enter a task you need to complete">
-    <button id="enter">Add Item</button>
-    <ul id="toDoList"></ul>
+<h1>Simple To-Do List</h1>
+<div id="instructions">
+    <ol>
+        <li>Enter an item in your to-do list.</li>
+        <li>Click the item to mark it as done. (Click again to unmark it as done.)</li>
+        <li>If you're REALLY sure it's finished, click the delete button to remove it.</li>
+    </ol>
+</div>
+<input type="text" id="userInput" placeholder="Enter a task you need to complete">
+<input type="text" id="categoryInput" placeholder="Enter or customize a category">
+<select id="categorySelect">
+    <option value="personal">Personal</option>
+    <option value="work">Work</option>
+    <option value="study">Study</option>
+    <!-- Add more categories as needed -->
+</select>
+<button id="enter">Add Item</button>
+<ul id="toDoList"></ul>
 
 
     <script src="script.js" type="text/javascript"></script>

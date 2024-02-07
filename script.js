@@ -12,7 +12,7 @@ function createListElement(text, category) {
     const li = document.createElement('li');
     li.innerHTML = `<span class="task">${text}</span> <span class="category">${category}</span> <button class="delete">delete</button>`;
     ul.appendChild(li);
-    li.addEventListener('click', toggleDone);
+    // li.addEventListener('click', toggleDone);
     li.querySelector('.delete').addEventListener('click', deleteItem);
     saveToLocalStorage();
 }
@@ -22,12 +22,8 @@ function addListAfterClickOrKeypress(event) {
         const selectedCategory = categoryInput.value || categorySelect.value; // Use the custom category if provided
         createListElement(input.value, selectedCategory);
         input.value = '';
+        categoryInput.value = '';
     }
-}
-
-function toggleDone() {
-    this.classList.toggle('done');
-    saveToLocalStorage();
 }
 
 function deleteItem(event) {
@@ -91,9 +87,7 @@ function updateCategoryOptions(customCategory) {
 }
 
 ul.addEventListener('click', function (event) {
-    if (event.target.tagName === 'li') {
-        toggleDone.call(event.target);
-    }
+
     if (event.target.classList.contains('delete')) {
         deleteItem.call(event.target);
     }

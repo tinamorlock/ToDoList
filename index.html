@@ -8,16 +8,9 @@
 </head>
 <body>
 <h1>Simple To-Do List</h1>
-<div id="instructions">
-    <ol>
-        <li>Enter an item in your to-do list.</li>
-        <li>Select a generic category or create your own.</li>
-        <li>Click the item to mark it as done. (Click again to unmark it as done.)</li>
-        <li>If you're REALLY sure it's finished, click the delete button to remove it.</li>
-    </ol>
-</div>
 <input type="text" id="userInput" placeholder="Enter a task you need to complete">
 <input type="text" id="categoryInput" placeholder="Enter or customize a category">
+<input type="date" id="dueDate" class="get-date">
 <select id="categorySelect">
     <option value="personal">Personal</option>
     <option value="work">Work</option>

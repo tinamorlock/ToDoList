@@ -2,17 +2,17 @@ const button = document.getElementById('enter');
 const input = document.getElementById('userInput');
 const categoryInput = document.getElementById('categoryInput');
 const categorySelect = document.getElementById('categorySelect');
+const dateInput = document.getElementById('dueDate');
 const ul = document.getElementById('toDoList');
 
 function inputLength() {
     return input.value.length;
 }
 
-function createListElement(text, category) {
+function createListElement(text, category, date) {
     const li = document.createElement('li');
-    li.innerHTML = `<span class="task">${text}</span> <span class="category">${category}</span> <button class="delete">delete</button>`;
+    li.innerHTML = `<span class="task">${text}</span> <span class="category">${category}</span><span class="date">${date}</span> <button class="delete">delete</button>`;
     ul.appendChild(li);
-    // li.addEventListener('click', toggleDone);
     li.querySelector('.delete').addEventListener('click', deleteItem);
     saveToLocalStorage();
 }
@@ -20,9 +20,10 @@ function createListElement(text, category) {
 function addListAfterClickOrKeypress(event) {
     if (inputLength() > 0 && (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter'))) {
         const selectedCategory = categoryInput.value || categorySelect.value; // Use the custom category if provided
-        createListElement(input.value, selectedCategory);
+        createListElement(input.value, selectedCategory, dateInput.value);
         input.value = '';
         categoryInput.value = '';
+        dateInput.value = '';
     }
 }
 
@@ -38,8 +39,9 @@ function deleteItem(event) {
 function saveToLocalStorage() {
     const items = Array.from(ul.children).map(item => {
         const text = item.querySelector('.task').textContent.trim();
+        const date = item.querySelector('.date').textContent.trim();
         const category = item.querySelector('.category').textContent.trim();
-        return { text, category };
+        return { text, category, date };
     });
     localStorage.setItem('toDoListItems', JSON.stringify(items));
 }
@@ -48,8 +50,8 @@ function loadFromLocalStorage() {
     const savedItems = localStorage.getItem('toDoListItems');
     if (savedItems) {
         const items = JSON.parse(savedItems);
-        items.forEach(({ text, category }) => {
-            createListElement(text, category);
+        items.forEach(({ text, category, date }) => {
+            createListElement(text, category, date);
         });
     }
 }

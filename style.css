@@ -48,16 +48,12 @@ input {
 li {
     padding: 4px;
 }
-
-.task {
-    padding-right: 50px;
-}
 .category {
     background-color: yellowgreen;
     color: black;
-    margin-right: 50px;
+    margin-left: 5%;
 }
 
-.done {
-    text-decoration: line-through;
+.date, .delete {
+    margin-left: 5%;
 }

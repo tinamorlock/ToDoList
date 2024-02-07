@@ -41,9 +41,9 @@ function deleteItem(event) {
 
 function saveToLocalStorage() {
     const items = Array.from(ul.children).map(item => {
-        const text = item.firstChild.textContent.trim();
-        const categoryStartIndex = text.indexOf('(Category:');
-        return categoryStartIndex !== -1 ? text.slice(0, categoryStartIndex).trim() : text;
+        const text = item.querySelector('.task').textContent.trim();
+        const category = item.querySelector('.category').textContent.trim();
+        return { text, category };
     });
     localStorage.setItem('toDoListItems', JSON.stringify(items));
 }
@@ -52,7 +52,9 @@ function loadFromLocalStorage() {
     const savedItems = localStorage.getItem('toDoListItems');
     if (savedItems) {
         const items = JSON.parse(savedItems);
-        items.forEach(item => createListElement(item, 'Default Category')); // Assuming a default category for existing items
+        items.forEach(({ text, category }) => {
+            createListElement(text, category);
+        });
     }
 }
 
